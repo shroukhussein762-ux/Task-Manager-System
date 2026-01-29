@@ -87,17 +87,12 @@ void TaskManager::AddTask()
 void TaskManager::UpdateTaskStatus()
 {
     int userId, projectId, taskId;
-    string status;
 
     cout << "User ID: ";
     cin >> userId;
     cout << "Project ID: ";
     cin >> projectId;
     cout << "Task ID: ";
-    cin >> taskId;
-    cout << "New Status: ";
-    cin.ignore();
-    getline(cin, status);
     if (!users.count(userId))
     {
         cout << "User not found!\n";
@@ -111,7 +106,6 @@ void TaskManager::UpdateTaskStatus()
         return;
     }
     p->UpdateTaskStatus(taskId);
-    cout << "Task Status Update successfully.\n";
 }
 
 void TaskManager::ViewTasks()
