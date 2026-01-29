@@ -1,12 +1,12 @@
-<<<<<<< HEAD
 #include "Task.h"
 
-Task::Task( int id,const string& title, const string& description)
+Task::Task( int id,const string& title, const string& description,int priority)
 {
     this->id = id;
     this->title = title;
     this->description = description;
-    status = "To Do";
+    this->priority=priority;
+    this->status=TODO;
 
 }
 
@@ -19,62 +19,29 @@ string Task::GetTitle(){
 }
 
 string Task::GetStatus(){
-    return status;
+    switch (status) {
+        case TODO: return "To Do";
+        case IN_PROGRESS: return "In Progress";
+        case DONE: return "Done";
+        default: return "Unknown";
+}
 }
 
 string Task::GetDescription(){
     return description;
 }
 
-void Task::ChangeStatus(const string& NewStatus){
-    status=NewStatus;
+void Task::ChangeStatus(int choice){
+   if (choice == 1) status = TODO;
+    else if (choice == 2) status = IN_PROGRESS;
+    else if (choice == 3) status = DONE;
+    else 
+    cout<<"INVALID CHOICE\n";
 }
 
 void Task::Display(){
-     cout << "----------------------\n";
-    cout << "Task ID: " << id << endl;
-    cout << "Title: " << title << endl;
-    cout << "Description: " << description << endl;
-    cout << "Status: " << status << endl;
-    cout << "----------------------\n";
-=======
-#include "Task.h"
-
-Task::Task( int id,const string& title, const string& description)
-{
-    this->id = id;
-    this->title = title;
-    this->description = description;
-    status = "To Do";
-
-}
-
-int Task::GetId(){
-    return id;
-}
-
-string Task::GetTitle(){
-    return title;
-}
-
-string Task::GetStatus(){
-    return status;
-}
-
-string Task::GetDescription(){
-    return description;
-}
-
-void Task::ChangeStatus(const string& NewStatus){
-    status=NewStatus;
-}
-
-void Task::Display(){
-     cout << "----------------------\n";
-    cout << "Task ID: " << id << endl;
-    cout << "Title: " << title << endl;
-    cout << "Description: " << description << endl;
-    cout << "Status: " << status << endl;
-    cout << "----------------------\n";
->>>>>>> 4d09b1b (Enhance task management with OOP principles and enums)
+  string pioName = (priority == 1) ? "High" : (priority == 2 ? "Medium" : "Low");
+    cout << "[" << id << "] " << title << " | Priority: " << pioName 
+         << " | Status: " << GetStatus() << endl;
+    cout << "   Description: " << description << endl;
 }
