@@ -11,6 +11,7 @@ int User::GetNextAvailableProjectId()
     else
     {
         idToUse = ProjectCounter++;
-    Id = idToUse;
+        Id = idToUse;
+    }
     return idToUse;
 }
