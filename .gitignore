@@ -1,11 +1,12 @@
-# Ignore executable files
 *.exe
 *.out
 *.app
-
-# Ignore VS Code folders
 .vscode/
-
-# Ignore build and object files
+.idea/
 *.o
 *.obj
+*.bin
+*.swp
+.DS_Store
+Thumbs.db
+database.txt
